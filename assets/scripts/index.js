@@ -1,3 +1,5 @@
+'use strict';
+
 const listDirectors = document.querySelector(
   '.section-directors__list-directors'
 );
@@ -54,28 +56,30 @@ const directors = [
   }
 ];
 
-directors.forEach(director => {
-  const item = document.createElement('li');
-  const container = document.createElement('div');
-  const span = document.createElement('span');
-  const link = document.createElement('a');
+if (listDirectors && divBestMovies) {
+  directors.forEach(director => {
+    const item = document.createElement('li');
+    const container = document.createElement('div');
+    const span = document.createElement('span');
+    const link = document.createElement('a');
 
-  item.classList.add('section-directors__item-director');
-  container.classList.add('section-directors__details');
-  span.classList.add('section-directors__career');
-  link.classList.add('section-directors__films');
+    item.classList.add('section-directors__item-director');
+    container.classList.add('section-directors__details');
+    span.classList.add('section-directors__career');
+    link.classList.add('section-directors__films');
 
-  item.textContent = director.name;
-  span.textContent = director.career;
-  link.textContent = 'фильмография';
+    item.textContent = director.name;
+    span.textContent = director.career;
+    link.textContent = 'фильмография';
 
-  link.href = director.films;
+    link.href = director.films;
 
-  container.append(span, link);
-  item.append(container);
-  listDirectors.append(item);
+    container.append(span, link);
+    item.append(container);
+    listDirectors.append(item);
 
-  topFilmsList.push(director.top_rated_film);
-});
+    topFilmsList.push(director.top_rated_film);
+  });
 
-divBestMovies.append(topFilmsList.join(', '));
+  divBestMovies.append(topFilmsList.join(', '));
+}
